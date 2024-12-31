@@ -1,6 +1,6 @@
 # ComfyUI LatentSync (Unofficial Support)
 
-Unofficial [LatentSync](https://github.com/hay86/ComfyUI_LatentSync) support for [ComfyUI](https://github.com/comfyanonymous/ComfyUI).
+Unofficial [LatentSync](https://github.com/bytedance/LatentSync) support for [ComfyUI](https://github.com/comfyanonymous/ComfyUI).
 
 ## Important Updates
 - **2024/12/31:** Added ComfyUI nodes and workflow examples

@@ -1,0 +1,204 @@
+{
+  "last_node_id": 38,
+  "last_link_id": 34,
+  "nodes": [
+    {
+      "id": 35,
+      "type": "D_LatentSyncNode",
+      "pos": [
+        694.6718139648438,
+        609.6431274414062
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 32
+        },
+        {
+          "name": "video_path",
+          "type": "STRING",
+          "link": 33,
+          "widget": {
+            "name": "video_path"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video_path",
+          "type": "STRING",
+          "links": [
+            34
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "D_LatentSyncNode"
+      },
+      "widgets_values": [
+        "",
+        898,
+        "randomize"
+      ]
+    },
+    {
+      "id": 37,
+      "type": "LoadAudio",
+      "pos": [
+        283.78656005859375,
+        399.9381103515625
+      ],
+      "size": [
+        315,
+        124
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            32
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "tts2-male.wav",
+        null,
+        ""
+      ]
+    },
+    {
+      "id": 36,
+      "type": "ACE_VideoPreview",
+      "pos": [
+        1137.5843505859375,
+        614.7468872070312
+      ],
+      "size": [
+        315,
+        553.04345703125
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "STRING",
+          "link": 34,
+          "widget": {
+            "name": "video"
+          }
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "ACE_VideoPreview"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 38,
+      "type": "ACE_VideoLoad",
+      "pos": [
+        277.66790771484375,
+        617.6464233398438
+      ],
+      "size": [
+        315,
+        612.4444580078125
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            33
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ACE_VideoLoad"
+      },
+      "widgets_values": [
+        "60502_1735540982.mp4",
+        "Video",
+        {
+          "hidden": false,
+          "paused": false,
+          "params": {}
+        }
+      ]
+    }
+  ],
+  "links": [
+    [
+      32,
+      37,
+      0,
+      35,
+      0,
+      "AUDIO"
+    ],
+    [
+      33,
+      38,
+      0,
+      35,
+      1,
+      "STRING"
+    ],
+    [
+      34,
+      35,
+      0,
+      36,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9646149645000112,
+      "offset": [
+        26.85267357176724,
+        -161.38707955649244
+      ]
+    },
+    "workspace_info": {
+      "id": "pdbYnk386LvXhcCuOca6c",
+      "saveLock": false,
+      "cloudID": null,
+      "coverMediaPath": null
+    },
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0
+  },
+  "version": 0.4
+}

@@ -24,12 +24,12 @@ from latentsync.whisper.audio2feature import Audio2Feature
 
 
 def main(config, args):
-    scheduler = DDIMScheduler.from_pretrained("configs")
+    scheduler = DDIMScheduler.from_pretrained(args.scheduler_config_path)
 
     if config.model.cross_attention_dim == 768:
-        whisper_model_path = "checkpoints/whisper/small.pt"
+        whisper_model_path = args.whisper_ckpt_path
     elif config.model.cross_attention_dim == 384:
-        whisper_model_path = "checkpoints/whisper/tiny.pt"
+        whisper_model_path = args.whisper_ckpt_path
     else:
         raise NotImplementedError("cross_attention_dim must be 768 or 384")
 
@@ -48,8 +48,8 @@ def main(config, args):
     unet = unet.to(dtype=torch.float16)
 
     # set xformers
-    if is_xformers_available():
-        unet.enable_xformers_memory_efficient_attention()
+    #if is_xformers_available():
+    #    unet.enable_xformers_memory_efficient_attention()
 
     pipeline = LipsyncPipeline(
         vae=vae,
@@ -88,6 +88,8 @@ if __name__ == "__main__":
     parser.add_argument("--audio_path", type=str, required=True)
     parser.add_argument("--video_out_path", type=str, required=True)
     parser.add_argument("--seed", type=int, default=1247)
+    parser.add_argument("--scheduler_config_path", type=str, default="configs")
+    parser.add_argument("--whisper_ckpt_path", type=str, default="checkpoints/whisper/tiny.pt")
     args = parser.parse_args()
 
     config = OmegaConf.load(args.unet_config_path)

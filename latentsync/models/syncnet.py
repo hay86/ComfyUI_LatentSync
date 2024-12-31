@@ -21,7 +21,7 @@ from ..utils.util import cosine_loss
 import torch.nn as nn
 import torch.nn.functional as F
 
-from diffusers.models.attention import CrossAttention, FeedForward
+from diffusers.models.attention import Attention as CrossAttention, FeedForward
 from diffusers.utils.import_utils import is_xformers_available
 from einops import rearrange
 

@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 from torchvision import transforms
 import cv2
 from einops import rearrange
@@ -29,7 +30,7 @@ https://stackoverflow.com/questions/23853632/which-kind-of-interpolation-best-fo
 
 
 def load_fixed_mask(resolution: int) -> torch.Tensor:
-    mask_image = cv2.imread("latentsync/utils/mask.png")
+    mask_image = cv2.imread(os.path.join(os.path.dirname(__file__), "mask.png"))
     mask_image = cv2.cvtColor(mask_image, cv2.COLOR_BGR2RGB)
     mask_image = cv2.resize(mask_image, (resolution, resolution), interpolation=cv2.INTER_AREA) / 255.0
     mask_image = rearrange(torch.from_numpy(mask_image), "h w c -> c h w")

@@ -1,0 +1,15 @@
+[project]
+name = "latentsync"
+description = "Unofficial implementation of [a/LatentSync](https://github.com/bytedance/LatentSync) for ComfyUI"
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = ["torch", "torchvision", "--extra-index-url https://download.pytorch.org/whl/cu121", "xformers", "--extra-index-url https://download.pytorch.org/whl/cu121", "triton", "diffusers", "transformers", "huggingface-hub", "imageio", "decord", "accelerate", "einops", "omegaconf", "safetensors", "opencv-python", "mediapipe", "av", "torch-fidelity", "torchmetrics", "python_speech_features", "librosa", "scenedetect", "ffmpeg-python", "lpips", "face-alignment", "ninja", "pandas", "numpy"]
+
+[project.urls]
+Repository = "https://github.com/hay86/ComfyUI_LatentSync"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI_LatentSync"
+Icon = ""

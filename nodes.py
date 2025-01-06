@@ -1,6 +1,6 @@
 import os
-import torch
 import random
+import platform
 import torchaudio
 import folder_paths
 import numpy as np
@@ -75,8 +75,13 @@ class LatentSyncNode:
         assert os.path.exists(audio_path), "audio_path not exists"
 
         # inference
-        env = ':'.join([os.environ.get('PYTHONPATH', ''), cur_dir])
-        cmd = f"""PYTHONPATH={env} python {infer_py} --unet_config_path "{unet_config_path}" --inference_ckpt_path "{ckpt_path}" --video_path "{video_path}" --audio_path "{audio_path}" --video_out_path {output_video_path} --seed {seed} --scheduler_config_path {scheduler_config_path} --whisper_ckpt_path {whisper_ckpt_path} """
+        env = os.environ.get('PYTHONPATH', '')
+        if platform.system() == "Windows":
+            env = f"{env};{cur_dir}" if env else cur_dir
+            cmd = f"""set PYTHONPATH={env} && python {infer_py} --unet_config_path "{unet_config_path}" --inference_ckpt_path "{ckpt_path}" --video_path "{video_path}" --audio_path "{audio_path}" --video_out_path {output_video_path} --seed {seed} --scheduler_config_path {scheduler_config_path} --whisper_ckpt_path {whisper_ckpt_path} """
+        else:
+            env = f"{env}:{cur_dir}" if env else cur_dir
+            cmd = f"""PYTHONPATH={env} python {infer_py} --unet_config_path "{unet_config_path}" --inference_ckpt_path "{ckpt_path}" --video_path "{video_path}" --audio_path "{audio_path}" --video_out_path {output_video_path} --seed {seed} --scheduler_config_path {scheduler_config_path} --whisper_ckpt_path {whisper_ckpt_path} """
         
         print(cmd)
         os.system(cmd)
